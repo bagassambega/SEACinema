@@ -1,0 +1,14 @@
+{% extends 'main/home.html' %}
+
+{% block movielist %}
+{% for movie in movies %}
+    <div class="movie">
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.description }}</p>
+        <p>Release Date: {{ movie.release_date }}</p>
+        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+        <p>Age Rating: {{ movie.age_rating }}</p>
+        <p>Ticket Price: {{ movie.ticket_price }}</p>
+    </div>
+{% endfor %}
+{% endblock %}

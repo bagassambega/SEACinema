@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+
+header {
+    background-color: #444654;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font: 1.2em 'Comfortaa', sans-serif ;
+    color: white;
+    padding: 0 .9em;
+}
+
+.hamburger i {
+    display: none;
+    cursor: pointer;
+}
+
+nav ol, .hamburger {
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ol li {
+    display: inline-block;
+    padding: 1em 2em;
+}
+
+nav ol li a {
+    font: 1.2em  'Montserrat', sans-serif;
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+nav ol li a:hover {
+    color: #5796e9;
+}
+
+nav ol li a:first-child {
+    margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+    .hamburger i {
+        display: flex;
+        padding: 3vh 2vw;
+        font-size: 2.8vw;
+        color: white;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .logo {
+        font-size: 4.4vw;
+        justify-content: center;
+    }
+}

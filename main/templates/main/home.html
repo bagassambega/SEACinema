@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block extra %}<link href="{% static '/css/home.css' %}" rel="stylesheet" type="text/css">{% endblock %}
+{% block content %}
+<div class="section1">
+    
+    <img src="{% static 'images/cinema.jpg' %}" alt="cinema" class="background">
+    <div class="section1-container">
+        <h2>SEACinema</h2>
+        <a href="#Movies">Watch!</a>
+    </div>
+</div>
+{% comment %} <div class="section2"></div> {% endcomment %}
+
+<h2>Movies</h2>
+<div class="movie-container" id="Movies">
+    {% for movie in movies %}
+        <div class="movie">
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.description }}</p>
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Age Rating: {{ movie.age_rating }}</p>
+            <p>Ticket Price: {{ movie.ticket_price }}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}
