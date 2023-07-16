@@ -11,3 +11,14 @@ class Movie(models.Model):
     
     def __str__(self):
         return self.title
+
+class Seat(models.Model):
+    seat_no = models.CharField(max_length=255)
+    is_booked = models.BooleanField(default=False)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    occupant_name = models.CharField(max_length=255, null=True, blank=True)
+    occupant_email = models.EmailField(null=True, blank=True)
+    purchase_time = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.seat_no

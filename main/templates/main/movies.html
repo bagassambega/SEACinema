@@ -1,6 +1,6 @@
-{% extends 'main/home.html' %}
-
-{% block movielist %}
+{% extends 'main/base.html' %}
+{% block title %}Movies{% endblock %}
+{% block content %}
 {% for movie in movies %}
     <div class="movie">
         <h2>{{ movie.title }}</h2>

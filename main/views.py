@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import urllib.request
 import json
 from .forms import RegisterForm
 from .models import Movie
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def home(request):
@@ -22,17 +23,27 @@ def home(request):
             )
             movie.save()
 
-    movies = Movie.objects.all()
+    if request.path == '/home':
+        movies = Movie.objects.all()[:5]
+        context = {'movies': movies}
+        return render(request, 'main/home.html', context)
+    elif request.path == "/movies":
+        movies = Movie.objects.all()
+        context = {'movies': movies}
+        return render(request, 'main/movies.html', context)
 
-    context = {'movies': movies}
-
-    return render(request, 'main/home.html', context)
 
 def sign_up(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/home')
     else:
         form = RegisterForm()
     
     return render(request, 'registration/sign_up.html', {"form": form})
+
+def account(request):
+    return render(request, 'registration/account.html')
