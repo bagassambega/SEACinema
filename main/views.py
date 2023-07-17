@@ -23,7 +23,7 @@ def home(request):
             )
             movie.save()
 
-    if request.path == '/home':
+    if request.path == '/home' or request.path == '/' or request.path == '':
         movies = Movie.objects.all()[:5]
         context = {'movies': movies}
         return render(request, 'main/home.html', context)
@@ -45,5 +45,13 @@ def sign_up(request):
     
     return render(request, 'registration/sign_up.html', {"form": form})
 
+
 def account(request):
-    return render(request, 'registration/account.html')
+    if request.user.is_authenticated:
+        return render(request, 'registration/account.html')
+    else:
+        return render(request, 'registration/login.html')
+
+
+def ticket(request):
+    return render(request, 'registration/ticket.html')

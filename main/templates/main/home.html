@@ -24,6 +24,21 @@
             <p>Age Rating: {{ movie.age_rating }}</p>
             <p>Ticket Price: {{ movie.ticket_price }}</p>
         </div>
+</div>
     {% endfor %}
 
+{% if user.is_authenticated %}
+<div class="account_snippets">
+    <h2 class="title_snippets">Your Account</h2>
+    <div class ="account_container"></div>
+</div>
+{% else %}
+<div class="account_snippets">
+    <h2 class="title_snippets">Your Account</h2>
+    <div class ="account_container">
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a> </p>
+        <p>Not having an account? <a href="{% url 'sign_up' %}">Create </a>an account now!</p>
+    </div>
+</div>
+{% endif %}
 {% endblock %}
